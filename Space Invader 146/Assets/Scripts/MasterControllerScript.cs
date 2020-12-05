@@ -28,6 +28,7 @@ public class MasterControllerScript : MonoBehaviour {
 
 	void move () {
 		if (!EnemyCounter.gameWin && !LifeManager.gameOver && !CounterScript.counter) {
+			Invoke ("ChooseWhenFire", 1f);
 			visible = true;
 			transform.gameObject.SetActive (true);
 			transform.position = new Vector2 (-10.5f, 4.0f);
@@ -41,12 +42,13 @@ public class MasterControllerScript : MonoBehaviour {
 	}
 
 	void Fire () {
-		
+		if(visible){
 			float x = transform.position.x;
 			float y = transform.position.y - 0.4f;
 			Instantiate (bullet, new Vector2 (x, y), Quaternion.identity);
 
 			float time = Random.Range (0.1f, 0.8f);
 			Invoke ("ChooseWhenFire", time);
+		}
 	}
 }

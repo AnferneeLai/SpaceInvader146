@@ -17,11 +17,11 @@ public class PlayerActionScript : MonoBehaviour {
 
 	void Update () {
 		if (!CounterScript.counter && !EnemyCounter.gameWin) {
-			if (transform.position.x > -5.925f && Input.GetKey (KeyCode.A)) {
+			if (transform.position.x > -9.925f && Input.GetKey (KeyCode.A)) {
 				player.velocity = new Vector2 (-moveSpeed, 0);
 			} 
 
-			else if (transform.position.x < 5.925f && Input.GetKey (KeyCode.D)) {
+			else if (transform.position.x < 9.925f && Input.GetKey (KeyCode.D)) {
 				player.velocity = new Vector2 (moveSpeed, 0);
 			}	
 

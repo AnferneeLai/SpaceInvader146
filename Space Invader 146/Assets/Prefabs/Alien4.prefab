@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 212335607989263146}
   - component: {fileID: 50845566902903384}
   - component: {fileID: 60218955965305826}
-  - component: {fileID: 114279475711789844}
+  - component: {fileID: 1865135859700873790}
+  - component: {fileID: 1942251943084267796}
   m_Layer: 0
   m_Name: Alien4
   m_TagString: Enemy4
@@ -113,7 +114,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872946170088752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -168,7 +169,33 @@ PolygonCollider2D:
       - {x: 0.33099347, y: -0.3498696}
       - {x: 0.33708078, y: -0.471472}
       - {x: 0.53, y: -0.48}
---- !u!114 &114279475711789844
+--- !u!61 &1865135859700873790
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872946170088752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.06, y: 0.96}
+    newSize: {x: 1.06, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.06, y: 0.96}
+  m_EdgeRadius: 0
+--- !u!114 &1942251943084267796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872946170088752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b7c9b63546a3148815b8e070d3b245, type: 3}
+  m_Script: {fileID: 11500000, guid: 9436851d4e5bcd84f8d58389310253f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dec: 
+  bullet: {fileID: 50231728420882858, guid: b1e4ad346dee53940bc6b054456f5a49, type: 3}
