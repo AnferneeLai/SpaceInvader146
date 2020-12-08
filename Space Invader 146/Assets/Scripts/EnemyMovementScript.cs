@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyMovementScript : MonoBehaviour {
 
-	private static Rigidbody2D collection;
+	[SerializeField]
+	public static Rigidbody2D collection;
 	private BoxCollider2D box;
 	private bool right = true;
 	private bool start = true;
@@ -23,7 +24,7 @@ public class EnemyMovementScript : MonoBehaviour {
 	}
 
 	void Update () {
-		moveSpeed = Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f;
+		moveSpeed = 20* (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
 
 		if (!CounterScript.counter) {
 			if (start) {
@@ -34,42 +35,42 @@ public class EnemyMovementScript : MonoBehaviour {
 			if (LifeManager.gameOver)
 				collection.velocity = Vector2.zero;
 
-			if (!transform.Find ("EnemyColumn5")) {
-				if (!dec [4])
-					decrementBoxOffset (4);
+			if (!transform.Find ("EnemyColumn1")) {
+				if (!dec [9])
+					incrementBoxOffset (9);
 				if (!transform.Find ("EnemyColumn4")) {
-					if (!dec [3])
-						decrementBoxOffset (3);
+					if (!dec [8])
+						incrementBoxOffset (8);
 					if (!transform.Find ("EnemyColumn3")) {
-						if (!dec [2])
-							decrementBoxOffset (2);
+						if (!dec [7])
+							incrementBoxOffset (7);
 						if (!transform.Find ("EnemyColumn2")) {
-							if (!dec [1])
-								decrementBoxOffset (1);
+							if (!dec [6])
+								incrementBoxOffset (6);
 							if (!transform.Find ("EnemyColumn1")) {
-								if (!dec [0])
-									decrementBoxOffset (0);
+								if (!dec [5])
+									incrementBoxOffset (5);
 							}
 						}
 					}
 				}
 			}
 
-			if (!transform.Find ("EnemyColumn10")) {
-				if (!dec [9])
-					incrementBoxOffset (9);
-				if (!transform.Find ("EnemyColumn9")) {
-					if (!dec [8])
-						incrementBoxOffset (8);
-					if (!transform.Find ("EnemyColumn8")) {
-						if (!dec [7])
-							incrementBoxOffset (7);
-						if (!transform.Find ("EnemyColumn7")) {
-							if (!dec [6])
-								incrementBoxOffset (6);
-							if (!transform.Find ("EnemyColumn6")) {
-								if (!dec [5])
-									incrementBoxOffset (5);
+			if (!transform.Find ("EnemyColumn11")) {
+				if (!dec [0])
+					decrementBoxOffset (0);
+				if (!transform.Find ("EnemyColumn10")) {
+					if (!dec [1])
+						decrementBoxOffset (1);
+					if (!transform.Find ("EnemyColumn9")) {
+						if (!dec [2])
+							decrementBoxOffset (2);
+						if (!transform.Find ("EnemyColumn8")) {
+							if (!dec [3])
+								decrementBoxOffset (3);
+							if (!transform.Find ("EnemyColumn7")) {
+								if (!dec [4])
+									decrementBoxOffset (4);
 							}
 						}
 					}

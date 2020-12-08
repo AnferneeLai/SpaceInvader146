@@ -9,7 +9,7 @@ public class ColumnControllerScript : MonoBehaviour {
 
 	void Start () {
 		float rand = Random.Range (min, max);
-		Invoke ("SelectForFire", rand);
+		//Invoke ("SelectForFire", rand);
 	}
 
 	void Update () {

@@ -99,7 +99,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (1)
+      value: EnemyColumn2
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -161,7 +161,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (7)
+      value: EnemyColumn8
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,7 +223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (4)
+      value: EnemyColumn5
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -285,7 +285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn
+      value: EnemyColumn1
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,7 +347,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (9)
+      value: EnemyColumn10
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -409,7 +409,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (6)
+      value: EnemyColumn7
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,7 +471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (10)
+      value: EnemyColumn11
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,7 +533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (2)
+      value: EnemyColumn3
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,7 +595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (5)
+      value: EnemyColumn6
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -657,7 +657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (8)
+      value: EnemyColumn9
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -719,7 +719,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225609271784318, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_Name
-      value: EnemyColumn (3)
+      value: EnemyColumn4
       objectReference: {fileID: 0}
     - target: {fileID: 4870903728192486, guid: 482e50723f614c84abc87bdd16f8ba6e, type: 3}
       propertyPath: m_LocalPosition.x
