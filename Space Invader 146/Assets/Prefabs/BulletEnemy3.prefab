@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 50000914773994046}
   - component: {fileID: 114633035441031012}
   - component: {fileID: 60040079923805828}
+  - component: {fileID: -5227797157073261494}
   m_Layer: 0
   m_Name: BulletEnemy3
   m_TagString: EnemyBullet
@@ -148,3 +149,15 @@ PolygonCollider2D:
       - {x: -0.049999997, y: -0.175}
       - {x: 0.049999997, y: -0.175}
       - {x: 0.049999997, y: 0.175}
+--- !u!114 &-5227797157073261494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096800341621984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6fdf15f39eda48a8e9447b7351f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
