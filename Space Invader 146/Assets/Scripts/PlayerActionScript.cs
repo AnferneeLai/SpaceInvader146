@@ -10,6 +10,7 @@ public class PlayerActionScript : MonoBehaviour {
 	public int fireBullet = 100;
 	public float moveSpeed = 6f;
 	public Rigidbody2D bullet;
+    public BulletWatch BulletWatch;
 
 	void Start () {
 		player = GetComponent<Rigidbody2D> ();
@@ -48,9 +49,10 @@ public class PlayerActionScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.tag == "EnemyBullet"){
 			Destroy (col.gameObject);
-
-			LifeManager.lives--;
+            BulletWatch.EnemyBulletCount -= 1;
+            LifeManager.lives--;
 
 		}
 	}
+
 }

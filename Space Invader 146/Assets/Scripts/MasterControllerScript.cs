@@ -11,6 +11,7 @@ public class MasterControllerScript : MonoBehaviour {
 	public Rigidbody2D bullet;
 	public float moveSpeed = 6f;
 
+
 	void Start () {
 		visible = false;
 		transform.gameObject.SetActive (false);
@@ -45,10 +46,14 @@ public class MasterControllerScript : MonoBehaviour {
 		if(visible){
 			float x = transform.position.x;
 			float y = transform.position.y - 0.4f;
-			Instantiate (bullet, new Vector2 (x, y), Quaternion.identity);
 
-			float time = Random.Range (0.1f, 0.8f);
-			Invoke ("ChooseWhenFire", time);
+                Instantiate(bullet, new Vector2(x, y), Quaternion.identity);
+
+
+
+                float time = Random.Range(0.1f, 0.8f);
+
+
 		}
 	}
 }
