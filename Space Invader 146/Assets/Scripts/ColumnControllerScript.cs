@@ -21,7 +21,7 @@ public class ColumnControllerScript : MonoBehaviour {
 		if (!CounterScript.counter && !LifeManager.gameOver && transform.childCount > 0) {
 			transform.GetChild (0).gameObject.GetComponent<EnemyScript> ().Invoke ("Fire", 0f);
 
-			float rand = Random.Range (min, max / 1);
+			float rand = Random.Range (min, max / 4);
 			Invoke ("SelectForFire", rand);
 		} 
 	}
