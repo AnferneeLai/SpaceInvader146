@@ -7,7 +7,7 @@ public class PlayerBulletScript : MonoBehaviour {
 	private Rigidbody2D bullet;
 	private int[] masterPoints = { 50, 100, 300, 500 };
 
-	public float speed = 5f;
+	public float speed = 7.5f;
 
 	void Start () {
 		bullet = GetComponent<Rigidbody2D> ();	

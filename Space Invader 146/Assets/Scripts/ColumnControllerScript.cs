@@ -9,7 +9,7 @@ public class ColumnControllerScript : MonoBehaviour {
 
 	void Start () {
 		float rand = Random.Range (min, max);
-		//Invoke ("SelectForFire", rand);
+		Invoke ("SelectForFire", rand);
 	}
 
 	void Update () {
@@ -21,7 +21,7 @@ public class ColumnControllerScript : MonoBehaviour {
 		if (!CounterScript.counter && !LifeManager.gameOver && transform.childCount > 0) {
 			transform.GetChild (0).gameObject.GetComponent<EnemyScript> ().Invoke ("Fire", 0f);
 
-			float rand = Random.Range (min, max / 4);
+			float rand = Random.Range (min, max / 1);
 			Invoke ("SelectForFire", rand);
 		} 
 	}

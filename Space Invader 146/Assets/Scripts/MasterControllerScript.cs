@@ -5,7 +5,7 @@ using UnityEngine;
 public class MasterControllerScript : MonoBehaviour {
 
 	private Rigidbody2D master;
-	private bool start = true;
+	//private bool start = true;
 	private bool visible = false;
 
 	public Rigidbody2D bullet;
