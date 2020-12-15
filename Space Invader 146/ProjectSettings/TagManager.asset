@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EndGame
+  - SideCollider
+  - Bunker
+  - Master
+  - Enemy4
+  - Enemy2
+  - Enemy3
+  - Enemy5
+  - Enemy1
+  - EnemyColumn
+  - EnemyBullet
+  - PlayerBullet
+  - EnemyShip
   layers:
   - Default
   - TransparentFX
@@ -13,9 +26,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Walls
+  - Enemy
+  - EnemyBullets
   - 
   - 
   - 

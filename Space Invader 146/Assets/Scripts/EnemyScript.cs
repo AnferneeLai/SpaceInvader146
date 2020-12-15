@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour {
 
 	public Rigidbody2D bullet;
     public BulletWatch BulletWatch;
-    public int BulletLimit = 1;
+    public int BulletLimit = 5;
 
 	void Fire () {
             float x = transform.position.x;
@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour {
 
 
                 float time = Random.Range(0.1f, 0.8f);
-                Invoke("ChooseWhenFire", time);
+                //Invoke("ChooseWhenFire", time);
             }
 
         

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 60084957928116230}
   - component: {fileID: 8161762928656290537}
   - component: {fileID: 3446484362079153310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletMaster
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -161,3 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf6fdf15f39eda48a8e9447b7351f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelfDestructTimer: 0

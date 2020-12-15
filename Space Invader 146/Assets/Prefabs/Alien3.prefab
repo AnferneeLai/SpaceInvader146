@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 60595463935402142}
   - component: {fileID: 6318984899818104599}
   - component: {fileID: -5346780045465365418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Alien3
   m_TagString: Enemy3
   m_Icon: {fileID: 0}
@@ -220,3 +220,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 50000914773994046, guid: d2d033bff73fcca4193b4e1b279b1b8d, type: 3}
+  BulletWatch: {fileID: 0}
+  BulletLimit: 1

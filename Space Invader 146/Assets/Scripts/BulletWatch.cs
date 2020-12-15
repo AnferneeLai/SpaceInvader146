@@ -16,7 +16,7 @@ public class BulletWatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((EnemyBulletCount));
+        //Debug.Log((EnemyBulletCount));
         EnemyBulletCount = GameObject.FindGameObjectsWithTag("EnemyBullet").Length;
 
     }

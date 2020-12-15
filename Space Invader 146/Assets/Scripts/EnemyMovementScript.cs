@@ -97,7 +97,7 @@ public class EnemyMovementScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col) {
 
 		if (col.gameObject.CompareTag("SideCollider")) {
-			Debug.Log("bouncing back");
+			//Debug.Log("bouncing back");
 
 			if (right) {
 				right = false;
