@@ -11,20 +11,28 @@ public class EnemyMovementScript : MonoBehaviour {
 	private bool start = true;
 
 	public bool[] dec;
+	public bool[] rows;
 	public static float moveSpeed;
+	private float multipler = 1f;
 
 	void Start () {
 		box = GetComponent<BoxCollider2D> ();
+
+
 		collection = GetComponent<Rigidbody2D> ();
 		moveRight ();
 
 		dec = new bool[10];
 		for (int i = 0; i < 10; i++)
 			dec [i] = false;
+
+		rows = new bool[4];
+		for (int i = 0; i < 4; i++)
+			rows [i] = false;
 	}
 
 	void Update () {
-		moveSpeed = 1 * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
+		moveSpeed = multipler * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
 
 		if (!CounterScript.counter) {
 			if (start) {
@@ -34,6 +42,23 @@ public class EnemyMovementScript : MonoBehaviour {
 
 			if (LifeManager.gameOver)
 				collection.velocity = Vector2.zero;
+			
+			if (!GameObject.Find ("Alien1")) {
+				if (!rows [0])
+					raiseBoxOffset(0);
+				if (!GameObject.Find ("Alien2")) {
+					if (!rows [1])
+						raiseBoxOffset(1);
+					if (!GameObject.Find ("Alien3")) {
+						if (!rows [2])
+							raiseBoxOffset(2);
+						if (!GameObject.Find ("Alien4")) {
+							if (!rows [3])
+								raiseBoxOffset(3);
+						}
+					}
+				}
+			}
 
 			if (!transform.Find ("EnemyColumn1")) {
 				if (!dec [9])
@@ -92,6 +117,12 @@ public class EnemyMovementScript : MonoBehaviour {
 
 		box.offset = new Vector2 (box.offset.x + 0.5f, box.offset.y);
 		box.size = new Vector2 (box.size.x - 1f, box.offset.y);
+	}
+
+	void raiseBoxOffset (int index) {
+		rows [index] = true;
+		box.offset = new Vector2(box.offset.x, box.offset.y + 0.55f);
+		box.size = new Vector2(box.offset.x, box.size.y - 0.55f);
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {

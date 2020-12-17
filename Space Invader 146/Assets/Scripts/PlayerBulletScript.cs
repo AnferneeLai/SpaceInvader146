@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerBulletScript : MonoBehaviour {
 	
 	private Rigidbody2D bullet;
+	private float multipler = 1f;
 	private int[] masterPoints = { 50, 100, 300, 500 };
 
 	public float speed = 7.5f;
 
 	void Start () {
 		bullet = GetComponent<Rigidbody2D> ();	
-		bullet.velocity = new Vector2 (0, speed);
+		bullet.velocity = new Vector2 (0, speed*multipler);
 	}
 
 
