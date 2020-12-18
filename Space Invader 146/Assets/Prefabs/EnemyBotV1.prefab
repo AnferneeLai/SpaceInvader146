@@ -104,8 +104,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyColumns: []
+  activeEnemyColumns: []
   dec: 
   rows: 
+  timeElapsed: 0
+  player:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1001 &788382916453559083
 PrefabInstance:
   m_ObjectHideFlags: 0

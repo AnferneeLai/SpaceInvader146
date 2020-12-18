@@ -159,7 +159,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fcf2bb25d289c40abbb4a7e7b37e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validTarget: 0
-  validPosition: 0
+  timeElapsed: 0
+  moveSpeed: 3
   bullet: {fileID: 50287089628101516, guid: 37da2357e63c43e4dbcbdea8ad5c3e28, type: 3}
-  bonus: {fileID: 0}
+  m_rigidbody2D: {fileID: 0}
+  ignoredLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  enemyBullets:
+    serializedVersion: 2
+    m_Bits: 1024

@@ -113,8 +113,8 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 	}
 
     private NodeStates LeftCheck() {
-        Vector3 boxCastOffset = new Vector3(transform.position.x - 5f, transform.position.y - 5.5f, transform.position.z);     
-        Vector3 boxCastSize = new Vector3(10f, 3f, 1f);                
+        Vector3 boxCastOffset = new Vector3(transform.position.x - 6.5f, transform.position.y - 5.5f, transform.position.z);     
+        Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
             return NodeStates.SUCCESS;
@@ -126,15 +126,15 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 
     private NodeStates SetLeft() {
         activeEnemyColumns.Clear();
-        for(int i = 0; i < enemyColumns.Count/2; i++) {
+        for(int i = 0; i < enemyColumns.Count/3; i++) {
             activeEnemyColumns.Insert(i, enemyColumns[i]);
         }
         return NodeStates.SUCCESS;
     }
 
     private NodeStates MiddleCheck() {
-        Vector3 boxCastOffset = new Vector3(transform.position.x - 5f, transform.position.y - 5.5f, transform.position.z);     
-        Vector3 boxCastSize = new Vector3(10f, 3f, 1f);                
+        Vector3 boxCastOffset = new Vector3(transform.position.x, transform.position.y - 5.5f, transform.position.z);     
+        Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
             return NodeStates.SUCCESS;
@@ -146,15 +146,20 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 
     private NodeStates SetMiddle() {
         activeEnemyColumns.Clear();
-        for(int i = 0; i < enemyColumns.Count/2; i++) {
-            activeEnemyColumns.Insert(i, enemyColumns[i]);
+        float startingIndex = enemyColumns.Count * (1/3);
+        int count = (int)startingIndex;
+        int count2 = 0;
+        for(int i = (int)startingIndex; i < enemyColumns.Count * (2/3); i++) {
+            activeEnemyColumns.Insert(count2, enemyColumns[count]);
+            count++;
+            count2++;
         }
         return NodeStates.SUCCESS;
     }
 
     private NodeStates RightCheck() {
-        Vector3 boxCastOffset = new Vector3(transform.position.x + 5f, transform.position.y - 5.5f, transform.position.z);     
-        Vector3 boxCastSize = new Vector3(10f, 3f, 1f);                
+        Vector3 boxCastOffset = new Vector3(transform.position.x + 6.5f, transform.position.y - 5.5f, transform.position.z);     
+        Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
             return NodeStates.SUCCESS;
@@ -166,10 +171,10 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 
     private NodeStates SetRight() {
         activeEnemyColumns.Clear();
-        float startingIndex = enemyColumns.Count/2;
+        float startingIndex = enemyColumns.Count * (2/3);
         int count = (int)startingIndex;
         int count2 = 0;
-        for(int i = enemyColumns.Count/2; i < enemyColumns.Count; i++) {
+        for(int i = (int)startingIndex; i < enemyColumns.Count; i++) {
             activeEnemyColumns.Insert(count2, enemyColumns[count]);
             count++;
             count2++;
@@ -209,18 +214,18 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
     void OnDrawGizmosSelected()
     {
         // Draw a semitransparent blue cube at the transforms position
-        Vector3 boxCastOffset1 = new Vector3(transform.position.x - 5F, transform.position.y - 5.5f, transform.position.z);
-        //Vector3 boxCastOffset2 = new Vector3(transform.position.x, transform.position.y + 5.5f, transform.position.z);
-        Vector3 boxCastOffset3 = new Vector3(transform.position.x + 5F, transform.position.y - 5.5f, transform.position.z);
+        Vector3 boxCastOffset1 = new Vector3(transform.position.x - 6.5F, transform.position.y - 5.5f, transform.position.z);
+        Vector3 boxCastOffset2 = new Vector3(transform.position.x, transform.position.y - 5.5f, transform.position.z);
+        Vector3 boxCastOffset3 = new Vector3(transform.position.x + 6.5F, transform.position.y - 5.5f, transform.position.z);
 
-        Vector3 boxCastSize1 = new Vector3(10f, 3f, 1f);                
-        //Vector3 boxCastSize2 = new Vector3(0.5f, 20f, 1f);                     
-        Vector3 boxCastSize3 = new Vector3(10f, 3f, 1f);                
+        Vector3 boxCastSize1 = new Vector3(6.5f, 3f, 1f);                
+        Vector3 boxCastSize2 = new Vector3(6.5f, 3f, 1f);                     
+        Vector3 boxCastSize3 = new Vector3(6.5f, 3f, 1f);                
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(boxCastOffset1, boxCastSize1);
 
-        //Gizmos.color = new Color(0, 1, 0, 0.5f);
-        //Gizmos.DrawCube(boxCastOffset2, boxCastSize2);
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
+        Gizmos.DrawCube(boxCastOffset2, boxCastSize2);
 
         Gizmos.color = new Color(0, 0, 1, 0.5f);
         Gizmos.DrawCube(boxCastOffset3, boxCastSize3);

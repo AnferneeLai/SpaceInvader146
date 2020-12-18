@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4488983878569909377}
   - component: {fileID: 4326942079726932929}
   - component: {fileID: 4353757065775097451}
+  - component: {fileID: 1049450634362514634}
   m_Layer: 12
   m_Name: PlayerBotV3
   m_TagString: Player
@@ -146,3 +147,32 @@ PolygonCollider2D:
       - {x: 0.5611211, y: 0.005227089}
       - {x: 0.46200848, y: -0.0002770424}
       - {x: 0.46608025, y: 0.09364271}
+--- !u!114 &1049450634362514634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375319207443410225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a03be63a0947114092ec07d6aaed28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeElapsed: 0
+  moveSpeed: 3
+  bullet: {fileID: 50287089628101516, guid: 37da2357e63c43e4dbcbdea8ad5c3e28, type: 3}
+  m_rigidbody2D: {fileID: 0}
+  enemyColumns: []
+  enemyShips: {fileID: 0}
+  target: {fileID: 0}
+  bonus: {fileID: 0}
+  ignoredLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  enemyBullets:
+    serializedVersion: 2
+    m_Bits: 1024
