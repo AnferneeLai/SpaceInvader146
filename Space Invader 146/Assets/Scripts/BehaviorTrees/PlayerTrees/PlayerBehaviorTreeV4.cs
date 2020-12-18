@@ -152,7 +152,7 @@ public class PlayerBehaviorTreeV4 : MonoBehaviour {
     }
 
     private NodeStates BulletCheck() {
-        if(GameObject.FindGameObjectWithTag("PlayerBullet") && timeElapsed < 0.5f/multiplier) {
+        if(GameObject.FindGameObjectWithTag("PlayerBullet") || timeElapsed < 0.5f/multiplier) {
             return NodeStates.FAILURE;
         } else {
             return NodeStates.SUCCESS;
