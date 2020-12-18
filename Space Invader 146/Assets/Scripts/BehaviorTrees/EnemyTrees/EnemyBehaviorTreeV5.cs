@@ -20,7 +20,10 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
 	private float multiplier = 1f;
     public LayerMask player;
     public bool advanced = false;
+    public List<GameObject> bunkers;
+    public GameObject target;
 
+    public GameObject b;
     public ActionNode leftPlayerCheckNode;
     public ActionNode setLeftColumnsActiveNode;
     public ActionNode middlePlayerCheckNode;
@@ -38,16 +41,19 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
     public ActionNode pauseAliensNode;
     public ActionNode columnCheckNode;
     public ActionNode advanceNode;
-
+    public ActionNode bunkerCheckNode;
+    public ActionNode targetBunkerNode;
 
     public Sequence attackSequence;
-    public Selector locationSelector;
+    public Selector targetSelector;
     public Sequence playerLeftSequence;
     public Sequence playerMiddleSequence;
     public Sequence playerRightSequence;
     public Sequence speedUpSequence;
     public Sequence pauseSequence;
     public Sequence advanceSequence;
+    public Sequence bunkerSequence;
+    
 
 	void Start () {
 		box = GetComponent<BoxCollider2D> ();
@@ -63,6 +69,9 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
         setDefaultColumnsActiveNode = new ActionNode(SetDefault);
         fireFromActiveColumnsNode = new ActionNode(Fire);
         checkPlayerAliveNode = new ActionNode(CheckPlayer);
+
+        bunkerCheckNode = new ActionNode(BunkerCheck);
+        targetBunkerNode = new ActionNode(TargetBunker);
 
         playerLifeCheckNode = new ActionNode(LifeCheck);
         alienCountCheckNode = new ActionNode(AlienCheck);
@@ -86,16 +95,18 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
                     rightPlayerCheckNode,
                     setRightColumnsActiveNode,
                 }); 
+                bunkerSequence = new Sequence(new List<Node> {
+                    bunkerCheckNode,
+                    targetBunkerNode,
+                });
 
-            locationSelector = new Selector(new List<Node> {
-                playerLeftSequence,
-                playerMiddleSequence,
-                playerRightSequence,
+            targetSelector = new Selector(new List<Node> {
+                bunkerSequence,
                 setDefaultColumnsActiveNode,
             }); 
 
         attackSequence = new Sequence(new List<Node> {
-            locationSelector,
+            targetSelector,
             checkPlayerAliveNode,
             fireFromActiveColumnsNode,
         });
@@ -119,6 +130,8 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
         var columnArray = GameObject.FindGameObjectsWithTag("EnemyColumn");
         enemyColumns = new List<GameObject>(columnArray);
 
+        bunkers = new List<GameObject>(GameObject.FindGameObjectsWithTag("CompleteBunker"));
+
 		dec = new bool[10];
 		for (int i = 0; i < 10; i++)
 			dec [i] = false;
@@ -131,7 +144,6 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
 
 	void Update () {
 		moveSpeed = multiplier * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
-        //Debug.Log(moveSpeed);
         timeElapsed += Time.deltaTime;
 
 		if (!CounterScript.counter) {
@@ -144,8 +156,7 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
             }
             attackSequence.Evaluate();
             speedUpSequence.Evaluate();
-            pauseSequence.Evaluate();
-            advanceSequence.Evaluate();
+            //pauseSequence.Evaluate();
             
             updateHitBox();	
 		} 
@@ -330,24 +341,108 @@ public class EnemyBehaviorTreeV5 : MonoBehaviour {
 
         return NodeStates.SUCCESS;
     }
+
+    private NodeStates BunkerCheck() {
+        for(int i = 0; i < bunkers.Count; i++) {
+            Vector3 boxCastOffset = new Vector3(bunkers[i].transform.position.x + 0.64f, bunkers[i].transform.position.y-1, 0);     
+            Vector3 boxCastSize = new Vector3(1.75f, 2f, 1f);                
+            RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
+            if(hit.collider != null) {
+                target = bunkers[i];
+                return NodeStates.SUCCESS; 
+            }
+        }
+        return NodeStates.FAILURE;
+    }
+
+    private NodeStates TargetBunker() {
+        if(target != null) {
+            switch(target.name)
+            {
+                case "Bunker":
+                    activeEnemyColumns.Clear();
+                    float startingIndex = enemyColumns.Count * 1 / 6;
+                    int count = (int)startingIndex;
+                    int count2 = 0;
+                    for(int i = (int)startingIndex; i < enemyColumns.Count * 2 / 6; i++) {
+                        activeEnemyColumns.Insert(count2, enemyColumns[count]);
+                        count++;
+                        count2++;
+                    }
+                    break;
+                case "Bunker (1)":
+                    activeEnemyColumns.Clear();
+                    startingIndex = enemyColumns.Count * 2 / 6;
+                    count = (int)startingIndex;
+                    count2 = 0;
+                    for(int i = (int)startingIndex; i < enemyColumns.Count * 3 / 6; i++) {
+                        activeEnemyColumns.Insert(count2, enemyColumns[count]);
+                        count++;
+                        count2++;
+                    }
+                    break;
+                case "Bunker (2)":
+                    activeEnemyColumns.Clear();
+                    startingIndex = enemyColumns.Count * 3 / 6;
+                    Debug.Log(startingIndex);
+                    count = (int)startingIndex;
+                    count2 = 0;
+                    for(int i = (int)startingIndex; i < enemyColumns.Count * 4 / 6; i++) {
+                        activeEnemyColumns.Insert(count2, enemyColumns[count]);
+                        count++;
+                        count2++;
+                    }
+                    break;
+                case "Bunker (3)":
+                    activeEnemyColumns.Clear();
+                    startingIndex = enemyColumns.Count * 4 / 6;
+                    count = (int)startingIndex;
+                    count2 = 0;
+                    for(int i = (int)startingIndex; i < enemyColumns.Count * 5 / 6; i++) {
+                        activeEnemyColumns.Insert(count2, enemyColumns[count]);
+                        count++;
+                        count2++;
+                    }
+                    break;
+                case "Bunker (4)":
+                    activeEnemyColumns.Clear();
+                    startingIndex = enemyColumns.Count * 5 / 6;
+                    count = (int)startingIndex;
+                    count2 = 0;
+                    for(int i = (int)startingIndex; i < enemyColumns.Count * 6 / 6; i++) {
+                        activeEnemyColumns.Insert(count2, enemyColumns[count]);
+                        count++;
+                        count2++;
+                    }
+                    break;                                        
+            }
+        }
+        return NodeStates.SUCCESS;
+    }
     void OnDrawGizmosSelected()
     {
         // Draw a semitransparent blue cube at the transforms position
         Vector3 boxCastOffset1 = new Vector3(transform.position.x - 6.5F, transform.position.y - 5.5f, transform.position.z);
         Vector3 boxCastOffset2 = new Vector3(transform.position.x, transform.position.y - 5.5f, transform.position.z);
         Vector3 boxCastOffset3 = new Vector3(transform.position.x + 6.5F, transform.position.y - 5.5f, transform.position.z);
+        Vector3 boxCastOffset4 = new Vector3(b.transform.position.x + 0.64f, b.transform.position.y-1, 0);
 
         Vector3 boxCastSize1 = new Vector3(6.5f, 3f, 1f);                
         Vector3 boxCastSize2 = new Vector3(6.5f, 3f, 1f);                     
-        Vector3 boxCastSize3 = new Vector3(6.5f, 3f, 1f);                
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(boxCastOffset1, boxCastSize1);
+        Vector3 boxCastSize3 = new Vector3(6.5f, 3f, 1f);   
+        Vector3 boxCastSize4 = new Vector3(1.75f, 2f, 1f);                
+             
+        // Gizmos.color = new Color(1, 0, 0, 0.5f);
+        // Gizmos.DrawCube(boxCastOffset1, boxCastSize1);
 
-        Gizmos.color = new Color(0, 1, 0, 0.5f);
-        Gizmos.DrawCube(boxCastOffset2, boxCastSize2);
+        // Gizmos.color = new Color(0, 1, 0, 0.5f);
+        // Gizmos.DrawCube(boxCastOffset2, boxCastSize2);
 
+        // Gizmos.color = new Color(0, 0, 1, 0.5f);
+        // Gizmos.DrawCube(boxCastOffset3, boxCastSize3);
+        
         Gizmos.color = new Color(0, 0, 1, 0.5f);
-        Gizmos.DrawCube(boxCastOffset3, boxCastSize3);
+        Gizmos.DrawCube(boxCastOffset4, boxCastSize4);
 
     }
 
