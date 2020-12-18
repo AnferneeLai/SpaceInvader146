@@ -148,7 +148,7 @@ public class PlayerBehaviorTreeV3 : MonoBehaviour {
     private NodeStates TargetFind() {
         var columnArray = GameObject.FindGameObjectsWithTag("EnemyColumn");
         enemyColumns = new List<GameObject>(columnArray);
-        enemyColumns.Sort(CompareChildrenCount);
+        //enemyColumns.Sort(CompareChildrenCount);
         target = enemyColumns[0];
 
         if(target != null) {

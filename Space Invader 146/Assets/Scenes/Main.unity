@@ -270,6 +270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBot
       objectReference: {fileID: 0}
+    - target: {fileID: 7988994919184245053, guid: dd5204e42300bab45ace24a0644841ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd5204e42300bab45ace24a0644841ef, type: 3}
 --- !u!1 &80100556
@@ -2500,6 +2504,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1049450634362514634, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
+      propertyPath: enemyShips
+      value: 
+      objectReference: {fileID: 1056144701}
+    - target: {fileID: 1049450634362514634, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
+      propertyPath: bonus
+      value: 
+      objectReference: {fileID: 1626156442}
     - target: {fileID: 4373238404484328707, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2546,11 +2558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4375319207443410225, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
       propertyPath: m_Name
-      value: PlayerBotV2
+      value: PlayerBotV3
       objectReference: {fileID: 0}
     - target: {fileID: 4375319207443410225, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6056358378263338455, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
       propertyPath: enemyShips
@@ -2632,32 +2644,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4375319207443410225, guid: 8cf3462a91d61d74cb4119538ea9d6ee, type: 3}
   m_PrefabInstance: {fileID: 5937676349944802295}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7988994918928942791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7988994918928942790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6757eb20c78463242a715710dca4ff41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeElapsed: 0
-  moveSpeed: 3
-  bullet: {fileID: 50287089628101516, guid: 37da2357e63c43e4dbcbdea8ad5c3e28, type: 3}
-  m_rigidbody2D: {fileID: 0}
-  enemyColumns: []
-  enemyShips: {fileID: 1056144701}
-  target: {fileID: 0}
-  bonus: {fileID: 1626156442}
-  ignoredLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  enemyBullets:
-    serializedVersion: 2
-    m_Bits: 1024

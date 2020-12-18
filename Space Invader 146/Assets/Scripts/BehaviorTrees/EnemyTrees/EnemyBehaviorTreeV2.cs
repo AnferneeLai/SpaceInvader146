@@ -10,12 +10,14 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 	private bool start = true;
     public List<GameObject> enemyColumns;
     public List<GameObject> activeEnemyColumns;
+    public string playerLocation;
 
 	public bool[] dec;
 	public bool[] rows;
 	public static float moveSpeed;
     public float timeElapsed = 0;
-	private float multipler = 1f;
+    public float pauseTime = 0;
+	private float multiplier = 1f;
     public LayerMask player;
 
     public ActionNode leftPlayerCheckNode;
@@ -28,11 +30,21 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
     public ActionNode fireFromActiveColumnsNode;
     public ActionNode checkPlayerAliveNode;
 
+    public ActionNode playerLifeCheckNode;
+    public ActionNode alienCountCheckNode;
+    public ActionNode increaseSpeedNode;
+    public ActionNode pauseCheckNode;
+    public ActionNode pauseAliensNode;
+
+
+
     public Sequence attackSequence;
     public Selector locationSelector;
     public Sequence playerLeftSequence;
     public Sequence playerMiddleSequence;
     public Sequence playerRightSequence;
+    public Sequence speedUpSequence;
+    public Sequence pauseSequence;
 
 	void Start () {
 		box = GetComponent<BoxCollider2D> ();
@@ -48,6 +60,12 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
         setDefaultColumnsActiveNode = new ActionNode(SetDefault);
         fireFromActiveColumnsNode = new ActionNode(Fire);
         checkPlayerAliveNode = new ActionNode(CheckPlayer);
+
+        playerLifeCheckNode = new ActionNode(LifeCheck);
+        alienCountCheckNode = new ActionNode(AlienCheck);
+        increaseSpeedNode = new ActionNode(IncreaseCheck);
+        pauseCheckNode = new ActionNode(PauseCheck);
+        pauseAliensNode = new ActionNode(PauseAliens);
 
                 playerLeftSequence = new Sequence(new List<Node> {
                     leftPlayerCheckNode,
@@ -75,12 +93,21 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
             locationSelector,
             checkPlayerAliveNode,
             fireFromActiveColumnsNode,
+        });
+
+        speedUpSequence = new Sequence(new List<Node> {
+            playerLifeCheckNode,
+            alienCountCheckNode,
+            increaseSpeedNode,
+        });
+
+        pauseSequence = new Sequence(new List<Node> {
+            pauseCheckNode,
+            pauseAliensNode,
         });    
 
         var columnArray = GameObject.FindGameObjectsWithTag("EnemyColumn");
         enemyColumns = new List<GameObject>(columnArray);
-
-
 
 		dec = new bool[10];
 		for (int i = 0; i < 10; i++)
@@ -93,7 +120,8 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 	}
 
 	void Update () {
-		moveSpeed = multipler * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
+		moveSpeed = multiplier * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
+        //Debug.Log(moveSpeed);
         timeElapsed += Time.deltaTime;
 
 		if (!CounterScript.counter) {
@@ -105,6 +133,9 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
                 collection.velocity = Vector2.zero;
             }
             attackSequence.Evaluate();
+            speedUpSequence.Evaluate();
+            pauseSequence.Evaluate();
+            
             updateHitBox();	
 		} 
         else {
@@ -117,6 +148,7 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
         Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
+            playerLocation = "left";
             return NodeStates.SUCCESS;
         }
         else {
@@ -137,6 +169,7 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
         Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
+            playerLocation = "middle";
             return NodeStates.SUCCESS;
         }
         else {
@@ -146,11 +179,11 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 
     private NodeStates SetMiddle() {
         activeEnemyColumns.Clear();
-        float startingIndex = enemyColumns.Count * (1/3);
+        float startingIndex = enemyColumns.Count / 3;
         int count = (int)startingIndex;
         int count2 = 0;
-        for(int i = (int)startingIndex; i < enemyColumns.Count * (2/3); i++) {
-            activeEnemyColumns.Insert(count2, enemyColumns[count]);
+        for(int i = (int)startingIndex; i < enemyColumns.Count * 2 / 3; i++) {
+            activeEnemyColumns.Insert(count2, enemyColumns[i]);
             count++;
             count2++;
         }
@@ -162,6 +195,7 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
         Vector3 boxCastSize = new Vector3(6.5f, 3f, 1f);                
         RaycastHit2D hit = Physics2D.BoxCast(boxCastOffset, boxCastSize, 0f, transform.TransformDirection(Vector2.up), 25f, player);
         if(hit.collider != null) {
+            playerLocation = "right";
             return NodeStates.SUCCESS;
         }
         else {
@@ -171,7 +205,7 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
 
     private NodeStates SetRight() {
         activeEnemyColumns.Clear();
-        float startingIndex = enemyColumns.Count * (2/3);
+        float startingIndex = enemyColumns.Count * 2 / 3;
         int count = (int)startingIndex;
         int count2 = 0;
         for(int i = (int)startingIndex; i < enemyColumns.Count; i++) {
@@ -211,6 +245,62 @@ public class EnemyBehaviorTreeV2 : MonoBehaviour {
         return NodeStates.SUCCESS;
     }
 
+    private NodeStates LifeCheck() {
+        if(LifeManager.lives > 1) {
+            return NodeStates.SUCCESS;
+        }
+        else{
+            return NodeStates.FAILURE;
+        }
+    }
+
+    private NodeStates AlienCheck() {
+        if(EnemyCounter.count < 28) {
+            return NodeStates.SUCCESS;
+        }
+        else{
+            return NodeStates.FAILURE;
+        }
+    }    
+    
+    private NodeStates IncreaseCheck() {
+        if(moveSpeed < 1.2) {
+            multiplier = 1.5f;
+            //Debug.Log("SPEED UP");
+            return NodeStates.SUCCESS;
+        }
+        else{
+            return NodeStates.FAILURE;
+        }
+    } 
+
+    private NodeStates PauseCheck() {
+        var rand = Random.Range(0, 1500);
+        if(rand == 69) {
+            //Debug.Log("pausing");
+            return NodeStates.SUCCESS;
+        }
+        else{
+            return NodeStates.FAILURE;
+        }
+    }    
+    
+    private NodeStates PauseAliens() {
+        if(collection.velocity.x != 0) {
+            collection.velocity = new Vector2(0, 0);
+            StartCoroutine("PauseTimer");
+            return NodeStates.SUCCESS;
+        }
+        else{
+            collection.velocity = new Vector2(moveSpeed, 0);
+            return NodeStates.FAILURE;
+        }
+    } 
+
+    IEnumerator PauseTimer() {
+        yield return new WaitForSeconds(1);
+        collection.velocity = new Vector2(moveSpeed, 0);
+    }
     void OnDrawGizmosSelected()
     {
         // Draw a semitransparent blue cube at the transforms position
