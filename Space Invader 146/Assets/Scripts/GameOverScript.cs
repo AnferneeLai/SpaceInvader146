@@ -22,7 +22,9 @@ public class GameOverScript : MonoBehaviour {
 		if (LifeManager.gameOver) {
 			gameoverLabel.text = "GAME OVER!";
 			if (Input.GetKeyDown (KeyCode.Space) || Input.touchCount > 0) {
-				Invoke ("ResetGame", 0.5f);
+                //Invoke ("ResetGame", 0.5f);
+                ResetGame();
+                Debug.Log("helo");
 			}
 		}
 
@@ -35,7 +37,8 @@ public class GameOverScript : MonoBehaviour {
 	}
 
 	public void ResetGame () {
-		LifeManager.lives = 3;
+        Debug.Log("helodwedw");
+        LifeManager.lives = 3;
 		ScoreManager.points = 0;
 		EnemyCounter.count = 55;
 		CounterScript.count = 3;

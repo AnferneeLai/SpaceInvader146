@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EndGame
+  - SideCollider
+  - Bunker
+  - PlayerBullet
+  - Master
+  - EnemyBullet
+  - Enemy4
+  - Enemy2
+  - Enemy3
+  - Enemy5
+  - Enemy1
   layers:
   - Default
   - TransparentFX

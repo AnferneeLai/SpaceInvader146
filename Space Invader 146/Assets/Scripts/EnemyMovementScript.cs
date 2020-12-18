@@ -12,9 +12,22 @@ public class EnemyMovementScript : MonoBehaviour {
 
 	public bool[] dec;
 	public static float moveSpeed;
+    public static double moveSpeedDeathMod;
+    public static double moveSpeedColumnMod;
+    public int enemy1;
+    public int enemy2;
+    public int enemy3;
+    public int enemy4;
+    public int enemy5;
+    public int enemyCount;
+    public Vector2 tempVelocity;
+    public double bufferTimer;
 
-	void Start () {
-		box = GetComponent<BoxCollider2D> ();
+    void Start () {
+        bufferTimer = 0;
+        moveSpeedDeathMod = 1;
+        moveSpeedColumnMod = 0;
+        box = GetComponent<BoxCollider2D> ();
 		collection = GetComponent<Rigidbody2D> ();
 		moveRight ();
 
@@ -24,9 +37,65 @@ public class EnemyMovementScript : MonoBehaviour {
 	}
 
 	void Update () {
-		moveSpeed = 1 * (Mathf.Pow ((Mathf.Sqrt (56 - EnemyCounter.count) / (Mathf.Sqrt (Mathf.Pow (56, 2) - Mathf.Pow (EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
 
-		if (!CounterScript.counter) {
+        enemy1 = GameObject.FindGameObjectsWithTag("Enemy1").Length;
+        enemy2 = GameObject.FindGameObjectsWithTag("Enemy2").Length;
+        enemy3 = GameObject.FindGameObjectsWithTag("Enemy3").Length;
+        enemy4 = GameObject.FindGameObjectsWithTag("Enemy4").Length;
+        enemy5 = GameObject.FindGameObjectsWithTag("Enemy5").Length;
+        enemyCount = enemy1 + enemy2 + enemy3 + enemy4 + enemy5;
+
+        if (enemyCount > 6)
+        {
+            moveSpeedDeathMod = 0.5;
+        }
+
+        if (enemyCount == 6)
+        {
+            moveSpeedDeathMod = 1;
+        }
+        if (enemyCount == 5)
+        {
+            moveSpeedDeathMod = 1.5;
+        }
+        if (enemyCount == 4)
+        {
+            moveSpeedDeathMod = 2;
+        }
+        if (enemyCount == 3)
+        {
+            moveSpeedDeathMod = 2.5;
+        }
+        if (enemyCount == 2)
+        {
+            moveSpeedDeathMod = 3;
+        }
+        if (enemyCount == 1)
+        {
+            moveSpeedDeathMod = 5;
+        }
+        if (PlayerBulletScript.buffer)
+        {
+            tempVelocity = collection.velocity;
+            collection.velocity = Vector2.zero;
+            bufferTimer = 0.25;
+            PlayerBulletScript.buffer = false;
+        }
+
+        if (bufferTimer > 0)
+        {
+            bufferTimer -= Time.unscaledDeltaTime;
+        }
+        if (bufferTimer < 0)
+        {
+
+            bufferTimer = 0;
+            collection.velocity = tempVelocity;
+        }
+
+        moveSpeed = ((float)moveSpeedDeathMod + (float)moveSpeedColumnMod) * (Mathf.Pow((Mathf.Sqrt(56 - EnemyCounter.count) / (Mathf.Sqrt(Mathf.Pow(56, 2) - Mathf.Pow(EnemyCounter.count, 2)))) * 10, 3) - 0.25f);
+        
+        if (!CounterScript.counter) {
 			if (start) {
 				moveRight ();
 				start = false;
@@ -99,7 +168,9 @@ public class EnemyMovementScript : MonoBehaviour {
 		if (col.gameObject.CompareTag("SideCollider")) {
 			Debug.Log("bouncing back");
 
-			if (right) {
+            moveSpeedColumnMod += 0.05;
+
+            if (right) {
 				right = false;
 				moveLeft ();
 			} else {
@@ -127,4 +198,6 @@ public class EnemyMovementScript : MonoBehaviour {
 		float y = transform.position.y - 0.2f;
 		transform.position = new Vector2 (x, y);
 	}
+
+
 }

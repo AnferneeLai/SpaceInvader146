@@ -567,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252156948}
   - component: {fileID: 252156947}
+  - component: {fileID: 252156949}
   m_Layer: 0
   m_Name: BulletManager
   m_TagString: Untagged
@@ -601,6 +602,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252156949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252156946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fa53335dd62a4a856e2c6df3d4a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1204841296}
+  lifeText: {fileID: 1366156276}
+  lifeImage1: {fileID: 1562006221}
+  lifeImage2: {fileID: 1339137425}
 --- !u!1001 &489307036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -681,6 +698,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dec: 
+  enemy1: 0
+  enemy2: 0
+  enemy3: 0
+  enemy4: 0
+  enemy5: 0
+  enemyCount: 0
+  tempVelocity: {x: 0, y: 0}
+  bufferTimer: 0
 --- !u!1 &524592162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1117,14 @@ PrefabInstance:
       propertyPath: BulletWatch
       value: 
       objectReference: {fileID: 252156947}
+    - target: {fileID: 114658494316659192, guid: 4768e63f8df5f904a9f35c040a0f514e, type: 3}
+      propertyPath: playerRenderer
+      value: 
+      objectReference: {fileID: 1204841301}
+    - target: {fileID: 114658494316659192, guid: 4768e63f8df5f904a9f35c040a0f514e, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1204841302}
     - target: {fileID: 212255369965219110, guid: 4768e63f8df5f904a9f35c040a0f514e, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -1116,6 +1149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!212 &1204841301 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212255369965219110, guid: 4768e63f8df5f904a9f35c040a0f514e, type: 3}
+  m_PrefabInstance: {fileID: 1130274730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1204841302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4181473683643556, guid: 4768e63f8df5f904a9f35c040a0f514e, type: 3}
+  m_PrefabInstance: {fileID: 1130274730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1339137423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434944540}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 11.5, y: 0.06189251, z: 0}
+  m_LocalPosition: {x: 11, y: 0.06189251, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1569656814}
@@ -1431,7 +1474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550377806}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -11.5, y: 0.06189251, z: 0}
+  m_LocalPosition: {x: -11, y: 0.06189251, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1569656814}
@@ -2546,6 +2589,10 @@ PrefabInstance:
       propertyPath: BulletWatch
       value: 
       objectReference: {fileID: 252156947}
+    - target: {fileID: 3677853100849435372, guid: 7f3ca8d11ef2a864793fe232438563b4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy1
+      objectReference: {fileID: 0}
     - target: {fileID: 3946870851869913016, guid: 7f3ca8d11ef2a864793fe232438563b4, type: 3}
       propertyPath: BulletWatch
       value: 

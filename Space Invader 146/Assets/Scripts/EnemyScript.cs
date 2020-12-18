@@ -18,7 +18,6 @@ public class EnemyScript : MonoBehaviour {
             else
             {
                 Instantiate(bullet, new Vector2(x, y), Quaternion.identity);
-                //BulletWatch.EnemyBulletCount = 1;
 
 
                 float time = Random.Range(0.1f, 0.8f);

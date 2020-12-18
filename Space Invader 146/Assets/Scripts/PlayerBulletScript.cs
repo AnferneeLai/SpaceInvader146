@@ -8,16 +8,18 @@ public class PlayerBulletScript : MonoBehaviour {
 	private int[] masterPoints = { 50, 100, 300, 500 };
 
 	public float speed = 7.5f;
+    public static bool buffer;
 
-	void Start () {
+    void Start () {
 		bullet = GetComponent<Rigidbody2D> ();	
 		bullet.velocity = new Vector2 (0, speed);
+        buffer = false;
 	}
 
 
-	void OnBecameInvisible () {
-		Destroy (gameObject);
-	}
+    void OnBecameInvisible () {
+        Destroy(GameObject.FindWithTag("PlayerBullet"));
+    }
 
 	void OnTriggerEnter2D (Collider2D col) {
 		if (!CounterScript.counter && !LifeManager.gameOver || !EnemyCounter.gameWin) {
@@ -29,8 +31,9 @@ public class PlayerBulletScript : MonoBehaviour {
 				Annihilate (col, 30, true);
 			else if (col.gameObject.tag == "Master") 
 				Annihilate (col, 0, false);
-			else if (col.gameObject.tag == "EnemyBullet" || col.gameObject.tag == "SideCollider")
-				Destroy (gameObject);
+            
+			//else if (col.gameObject.tag == "EnemyBullet" || col.gameObject.tag == "SideCollider")
+				//Destroy (col.gameObject);
 		}
 	}
 
@@ -41,7 +44,8 @@ public class PlayerBulletScript : MonoBehaviour {
 		if (enemy) {
 			Destroy (col.gameObject);
 			EnemyCounter.count--;
-		} else {
+            buffer = true;
+        } else {
 			if (point == 0) {
 				int index = Random.Range (0, 3);
 				ScoreManager.points += masterPoints [index];

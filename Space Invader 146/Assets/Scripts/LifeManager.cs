@@ -8,22 +8,26 @@ public class LifeManager : MonoBehaviour {
 	public static int lives = 3;
 	public GameObject player;
 	public static bool gameOver;
+    public Text lifeText;
+    public Image lifeImage1;
+    public Image lifeImage2;
 
-	void Start () {
-		gameOver = false;
+    void Start () {
+        lifeText.text = "3";
+        gameOver = false;
 	}
 
 	void Update () {
 		if (lives == 2) {
-			transform.Find ("LifeLabel").gameObject.GetComponent<Text> ().text = "2";
-			transform.Find ("LifeImage2").gameObject.SetActive (false);
+			lifeText.text = "2";
+            lifeImage2.enabled = false;
 		} if (lives == 1) {
-			transform.Find ("LifeLabel").gameObject.GetComponent<Text> ().text = "1";
-			transform.Find ("LifeImage1").gameObject.SetActive (false);
-		} if (lives == 0) {
+            lifeText.text = "1";
+            lifeImage1.enabled = false;
+        } if (lives == 0) {
 			gameOver = true;
 			player.SetActive (false);
-			transform.Find ("LifeLabel").gameObject.GetComponent<Text> ().text = "0";
+            lifeText.text = "0";
 		}
 	}
 }
