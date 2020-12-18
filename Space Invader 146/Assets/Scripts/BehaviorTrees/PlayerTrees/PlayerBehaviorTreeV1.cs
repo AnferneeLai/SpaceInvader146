@@ -158,8 +158,7 @@ public class PlayerBehaviorTreeV1 : MonoBehaviour {
         Vector3 raycastOffset = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);        
         RaycastHit2D hit = Physics2D.Raycast(raycastOffset, transform.TransformDirection(Vector2.up), 15f, ~ignoredLayers);
         if(hit.collider != null) {
-            if(!hit.collider.CompareTag("Bunker")) {
-                Debug.Log("under bunker");
+            if(!hit.collider.CompareTag("CompleteBunker")) {
                 return NodeStates.SUCCESS;
             }
             return NodeStates.RUNNING;
@@ -173,7 +172,6 @@ public class PlayerBehaviorTreeV1 : MonoBehaviour {
         Vector3 raycastOffset = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);        
         RaycastHit2D hit = Physics2D.Raycast(raycastOffset, transform.TransformDirection(Vector2.up), 15f, enemyBullets);
         if(hit.collider != null) {
-            Debug.Log("dodging");
             return NodeStates.SUCCESS;
         }
         else {

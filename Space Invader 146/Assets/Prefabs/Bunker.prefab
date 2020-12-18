@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 50596067632404710}
   - component: {fileID: 60639353928866922}
   - component: {fileID: 1128750227492611049}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_12
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 50311080151410942}
   - component: {fileID: 60625955516873052}
   - component: {fileID: 3483869270729552505}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_5
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 50142641255686282}
   - component: {fileID: 60731986106397144}
   - component: {fileID: 4340929480307450329}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_18
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 50740129633066316}
   - component: {fileID: 60238398003946936}
   - component: {fileID: 2454672348248467306}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_4
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 50204370423675474}
   - component: {fileID: 60032347691859312}
   - component: {fileID: 1389147535355212519}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_3
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 50551594531537478}
   - component: {fileID: 60533154243843390}
   - component: {fileID: 8833708180767413430}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_14
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 50853084253928070}
   - component: {fileID: 60777211774376964}
   - component: {fileID: 6153273311409082739}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_6
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 50223872439192780}
   - component: {fileID: 60027943015721950}
   - component: {fileID: 4038836385783264036}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_17
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 50245187262038672}
   - component: {fileID: 60116713369607724}
   - component: {fileID: 7231810256972597671}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_1
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 50491475976316052}
   - component: {fileID: 60141709857587528}
   - component: {fileID: 114418412539298536}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_0
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 50730638747719396}
   - component: {fileID: 60544949387948412}
   - component: {fileID: 7917942265683960395}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_9
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 50837794870461096}
   - component: {fileID: 60740286979544154}
   - component: {fileID: 1740728971438835537}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_13
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 50863623428757280}
   - component: {fileID: 60976183679177190}
   - component: {fileID: 5518353346457257033}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_8
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -1930,7 +1930,7 @@ GameObject:
   - component: {fileID: 50650883350621996}
   - component: {fileID: 60101559046855082}
   - component: {fileID: 1453846751328356532}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_2
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 50146162996524464}
   - component: {fileID: 60198417301584448}
   - component: {fileID: 621941972009808037}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_11
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 50691522030235530}
   - component: {fileID: 60916243722812762}
   - component: {fileID: 6182255136862748848}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_7
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 50652725544830490}
   - component: {fileID: 60925630649141434}
   - component: {fileID: 1994610364122368011}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_10
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2519,7 +2519,7 @@ GameObject:
   - component: {fileID: 50270978489272516}
   - component: {fileID: 60754566003204832}
   - component: {fileID: 5398308466402934552}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_15
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2666,7 +2666,7 @@ GameObject:
   - component: {fileID: 50397347810040472}
   - component: {fileID: 60542061944918334}
   - component: {fileID: 3546609120021552354}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bunker_16
   m_TagString: Bunker
   m_Icon: {fileID: 0}
@@ -2811,9 +2811,10 @@ GameObject:
   - component: {fileID: 4940169581141018}
   - component: {fileID: 212024161498631350}
   - component: {fileID: 95166382753652832}
-  m_Layer: 0
+  - component: {fileID: 6877597815058357614}
+  m_Layer: 13
   m_Name: Bunker
-  m_TagString: Untagged
+  m_TagString: CompleteBunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2921,3 +2922,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6877597815058357614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953321284026104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6e00026137a7249b969f1565606e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
