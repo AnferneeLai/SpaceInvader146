@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviorTreeV3 : MonoBehaviour {
+public class EnemyBehaviorTreeV4 : MonoBehaviour {
 
 	[SerializeField]
 	public static Rigidbody2D collection;
@@ -11,8 +11,6 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
     public List<GameObject> enemyColumns;
     public List<GameObject> activeEnemyColumns;
     public string playerLocation;
-    public bool advanced = false;
-
 
 	public bool[] dec;
 	public bool[] rows;
@@ -21,6 +19,7 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
     public float pauseTime = 0;
 	private float multiplier = 1f;
     public LayerMask player;
+    public bool advanced = false;
 
     public ActionNode leftPlayerCheckNode;
     public ActionNode setLeftColumnsActiveNode;
@@ -37,7 +36,7 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
     public ActionNode increaseSpeedNode;
     public ActionNode pauseCheckNode;
     public ActionNode pauseAliensNode;
-    public ActionNode rowCheckNode;
+    public ActionNode columnCheckNode;
     public ActionNode advanceNode;
 
 
@@ -70,7 +69,7 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
         increaseSpeedNode = new ActionNode(IncreaseCheck);
         pauseCheckNode = new ActionNode(PauseCheck);
         pauseAliensNode = new ActionNode(PauseAliens);
-        rowCheckNode = new ActionNode(RowCheck);
+        columnCheckNode = new ActionNode(ColumnCheck);
         advanceNode = new ActionNode(Advance);
 
                 playerLeftSequence = new Sequence(new List<Node> {
@@ -113,7 +112,7 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
         });    
 
         advanceSequence = new Sequence(new List<Node> {
-            rowCheckNode,
+            columnCheckNode,
             advanceNode,
         });   
 
@@ -314,8 +313,9 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
         collection.velocity = new Vector2(moveSpeed, 0);
     }
 
-    private NodeStates RowCheck() {
-        if(!GameObject.Find("Alien3") && !advanced){
+    private NodeStates ColumnCheck() {
+        if(transform.childCount < 9 && !advanced)
+        {
             advanced = true;
             return NodeStates.SUCCESS;
         }
@@ -327,6 +327,7 @@ public class EnemyBehaviorTreeV3 : MonoBehaviour {
     private NodeStates Advance() {
         moveDown();
         moveDown();
+
         return NodeStates.SUCCESS;
     }
     void OnDrawGizmosSelected()

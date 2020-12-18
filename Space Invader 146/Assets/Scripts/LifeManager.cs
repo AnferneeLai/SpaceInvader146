@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LifeManager : MonoBehaviour {
 
-	public static int lives = 3;
+	public static int lives = 33;
 	public GameObject player;
 	public static bool gameOver;
 
