@@ -69,6 +69,9 @@ public class EnemyBehaviorTreeV1 : MonoBehaviour {
         var columnArray = GameObject.FindGameObjectsWithTag("EnemyColumn");
         enemyColumns = new List<GameObject>(columnArray);
 
+        foreach(GameObject col in enemyColumns) {
+            col.transform.GetChild(0).GetComponent<EnemyScript>().Fire();
+        }
 
 
 		dec = new bool[10];
